@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+
+:root {
+  /* ## Colors */
+  /* ### Primary */
+  --Desaturated-Red: hsl(0, 36%, 70%);
+  --Soft-Red: hsl(0, 93%, 68%);
+
+  /* ### Neutral */
+  --Dark-Grayish-Red: hsl(0, 6%, 24%);
+
+  /* ### Gradients */
+  --White-Gradient: Linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%),
+    hsl(0, 100%, 98%)
+  );
+  --Redish-Gradient: Linear-gradient(
+    135deg,
+    hsl(0, 80%, 86%),
+    hsl(0, 74%, 74%)
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  height: 100vh;
+  color: var(--Desaturated-Red);
+  background: var(--White-Gradient);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 30%;
+  grid-template-areas:
+    "logo    logo    hero-image"
+    "content content hero-image"
+    "content content hero-image";
+  height: 100%;
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: center;
+  align-self: end;
+  width: 500px;
+}
+
+.content {
+  grid-area: content;
+  justify-self: center;
+  align-self: center;
+  width: 500px;
+  height: 500px;
+}
+
+.content-header {
+  font-size: 4rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+
+  padding: 0.5rem 0;
+}
+
+.content-header span {
+  color: black;
+  font-weight: 600;
+}
+
+.content-text {
+  padding: 1rem 0;
+  line-height: 2rem;
+  width: 450px;
+}
+
+form {
+  padding: 1rem 0;
+}
+
+label {
+  position: relative;
+}
+
+input[type="email"] {
+  width: 425px;
+  padding: 1rem;
+  padding-right: 8.5rem;
+
+  border-radius: 30px;
+  border: 2px solid var(--Desaturated-Red);
+
+  background-color: transparent;
+}
+
+input[type="email"]::placeholder {
+  color: var(--Desaturated-Red);
+}
+
+#error {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100px;
+}
+
+#btn {
+  cursor: pointer;
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+  right: -10px;
+
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 2.5rem;
+  background: var(--Redish-Gradient);
+
+  box-shadow: 0 10px 20px rgba(238, 98, 98, 0.4);
+}
+#error-message {
+  color: var(--Soft-Red);
+  position: absolute;
+  top: 50px;
+  left: 15px;
+}
+
+.hero-image {
+  grid-area: hero-image;
+  align-self: center;
+}
+
+#desktop-hero-image {
+  width: 100%;
+}
+#mobile-hero-image {
+  display: none;
+  width: 100%;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    grid-template-columns: unset;
+    grid-template-areas:
+      "logo"
+      "hero-image"
+      "content";
+  }
+
+  .logo {
+    align-self: center;
+    margin-left: 3.5rem;
+  }
+
+  .content {
+    margin: 0;
+    padding-top: 0.5rem;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .content-header {
+    font-size: 3rem;
+  }
+  .content-text {
+    width: 350px;
+    margin: auto;
+  }
+
+  input[type="email"] {
+    width: 340px;
+  }
+
+  .hero-image {
+    grid-area: hero-image;
+    align-self: unset;
+  }
+
+  #desktop-hero-image {
+    display: none;
+  }
+  #mobile-hero-image {
+    display: block;
+  }
+}
